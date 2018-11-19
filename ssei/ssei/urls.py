@@ -19,6 +19,4 @@ import search_app.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', search_app.views.home),
-    path('about/', search_app.views.about),
-
 ]
