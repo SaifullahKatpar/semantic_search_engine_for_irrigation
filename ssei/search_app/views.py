@@ -7,3 +7,6 @@ def home(request):
 
 def about(request):
 	return render(request,'search_app/about.html')
+
+def upload(request):
+	return render(request,'search_app/upload.html')
