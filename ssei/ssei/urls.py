@@ -20,8 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('upload/', search_app.views.upload),
-    path('about/', search_app.views.about),
-    path('', search_app.views.home),
+    path('admin/', admin.site.urls),    
+    path('ontologies/', search_app.views.ontologies,name="ontologies"),
+    path('ontologies/<int:ontology_id>', search_app.views.ontology_detail,name="detail"),
+    path('about/', search_app.views.about,name="about"),
+    path('', search_app.views.home,name="home"),
 ] + static(settings.STATIC_URL,document_root=settings.STATIC_ROOT,)

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+	<title>Ontology Detail</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+</head>
+<body>
+
+	<div class="container-fluid">
+		<h1> {{ ontology.name|capfirst }}</h1>
+		<a href="{{ontology.uri}}"> {{ ontology.uri }}</a>
+		<br>
+		{% if ontology.authors %}
+			Authors: 	
+			<p>
+			{% for author in  ontology.authors.all %}
+				 {{ author|capfirst }}<br>			 
+			{% endfor %}
+			</p>
+		{% endif %}
+	</div>
+
+</body>
+	<script src="{% static 'jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'popper.min' %}"></script>
+	<script src="{% static 'js/bootstrap.bundle.min' %}"></script>
+
+</html>
