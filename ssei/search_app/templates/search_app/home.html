@@ -1,44 +1,20 @@
-<!DOCTYPE html>
-<html>
-{% load static %}
+{% extends 'search_app/base.html' %}
 
-<head>
-	<title>Semantic Search Engine for Irrigation</title>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
-	<style type="text/css">
-	/* Styles for wrapping the search box */
+{% block content %}
 
-		.main {
-		    width: 50%;
-		    margin: 50px auto;
-		}
 
-		/* Bootstrap 4 text input with search icon */
+<div class="container search-box">
+	
+	<form 	autocomplete="off" action="/search/" method="get">
+  		<div class="autocomplete" style="width:500px;">
+        	{{ form }}
+  		</div>
+    <input type="submit" value="Search">
 
-		.has-search .form-control {
-		    padding-left: 2.375rem;
-		}
-	</style>
-</head>
-<body>
-<div class="main">
-  
-  <!-- Another variation with a button -->
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search Water Data">
-    <div class="input-group-append">
-      <button class="btn btn-secondary" type="button">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-  </div>
-  
+	</form>	
+	
 </div>
 
-</body>
-	<script src="{% static 'jquery-3.3.1.min.js' %}"></script>
-	<script src="{% static 'popper.min' %}"></script>
-	<script src="{% static 'js/bootstrap.bundle.min' %}"></script>
+{% endblock %}
 
-</html>
+

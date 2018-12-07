@@ -1,9 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Ontology
+from .forms import QueryForm
+
 
 def home(request):
-	return render(request,'search_app/home.html')
+	form = QueryForm()
+	return render(request,'search_app/home.html',{'form':form})
+
+
+def search(request):
+	return HttpResponse(request.GET['source'])
 
 def about(request):
 	return render(request,'search_app/about.html')
