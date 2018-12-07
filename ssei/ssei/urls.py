@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
-    path('search/', search_app.views.search ,name="search"),
+    path('test/', search_app.views.test ,name="test"),
     path('ontologies/', search_app.views.ontologies,name="ontologies"),
     path('ontologies/<int:ontology_id>', search_app.views.ontology_detail,name="detail"),
     path('about/', search_app.views.about,name="about"),

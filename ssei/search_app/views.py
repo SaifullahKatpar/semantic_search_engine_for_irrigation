@@ -2,15 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Ontology
 from .forms import QueryForm
-
+from .owlreadywrapper import OWLReady
 
 def home(request):
 	form = QueryForm()
 	return render(request,'search_app/home.html',{'form':form})
 
 
-def search(request):
-	return HttpResponse(request.GET['source'])
+def test(request):
+	obj = OWLReady()
+	res = obj.list_individuals()
+	return HttpResponse(res)
 
 def about(request):
 	return render(request,'search_app/about.html')
