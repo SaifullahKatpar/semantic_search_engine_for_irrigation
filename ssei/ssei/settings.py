@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,18 +84,20 @@ DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),        
-	'default': dj_database_url.config(
-	        default=config('DATABASE_URL')
-	    ),
-
      'searchdb':
      {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'waterdb',
-        'USER':'postgres',
-        'PASSWORD':'1234',
-        'HOST':'localhost',
-        'PORT':'5432',
+		'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd9e175n421po0d',
+        'USER':'ravrpspgvjudyt',
+        'PASSWORD':'836a4b3118b03be39685388472467cf35b26fbb4641cfe16942bddea4ca0e148',
+        'HOST':'ec2-54-235-193-0.compute-1.amazonaws.com',
+        'PORT':'5432',     
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'waterdb',
+        # 'USER':'postgres',
+        # 'PASSWORD':'1234',
+        # 'HOST':'localhost',
+        # 'PORT':'5432',
 
      }
     }
