@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zq*69&=zc&+tq&aru2ygl(75p#kga84t+xh$x!_*mz66@9r5c('
+#SECRET_KEY = 'zq*69&=zc&+tq&aru2ygl(75p#kga84t+xh$x!_*mz66@9r5c('
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'zq*69&=zc&+tq&aru2ygl(75p#kga84t+xh$x!_*mz66@9r5c(')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -75,15 +81,23 @@ WSGI_APPLICATION = 'ssei.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'waterdb',
-        # 'USER':'postgres',
-        # 'PASSWORD':'1234',
-        # 'HOST':'localhost',
-        # 'PORT':'5432',
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),        
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),        
+	'default': dj_database_url.config(
+	        default=config('DATABASE_URL')
+	    ),
+	
+     'searchdb':
+     {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'waterdb',
+        'USER':'postgres',
+        'PASSWORD':'1234',
+        'HOST':'localhost',
+        'PORT':'5432',
+
+     }
     }
     
 
@@ -128,3 +142,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
