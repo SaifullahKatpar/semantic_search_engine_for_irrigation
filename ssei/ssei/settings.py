@@ -84,7 +84,7 @@ DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),        
-     'searchdb':
+     'default':
      {
 		'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd9e175n421po0d',
