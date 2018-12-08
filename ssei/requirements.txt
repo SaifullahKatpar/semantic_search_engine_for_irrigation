@@ -16,4 +16,4 @@ rdflib==4.2.2
 rdflib-sqlalchemy==0.3.8
 six==1.11.0
 SQLAlchemy==1.2.14
-whitenoise==4.1.2
+whitenoise==4.1
